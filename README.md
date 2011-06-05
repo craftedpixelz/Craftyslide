@@ -44,15 +44,15 @@ Options
 -------
 
 
-### Width (number)
+### width (number)
 
 Set a custom width for your slideshow.
 
-### Height (number)
+### height (number)
 
 Set a custom height for your slideshow
 
-### Pagination (true/false)
+### pagination (true/false)
 
 Select whether to display pagination or not. Setting to false hides pagination and enables auto mode.
 
