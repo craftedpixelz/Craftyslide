@@ -1,8 +1,6 @@
 Craftyslide - A tiny jQuery slideshow plugin
 ============================================
 
-This is a plugin for jQuery that enables you to create a flickr-like slideshow on your website. Tested under IE6+, Firefox, Safari and Google Chrome.
-
 About
 -----
 
