@@ -1,5 +1,5 @@
 /*
-* Crafty Slide
+* Craftyslide
 * Created by: Abid Din - http://craftedpixelz.co.uk
 * Version: 1.0
 * License: Creative Commons Share Alike 3.0
