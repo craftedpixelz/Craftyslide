@@ -79,4 +79,4 @@ License
 -------
 
 Copyright (c) 2011 Crafted Pixelz
-Licensed under Creative Commons Share Alike 3.0
+Licensed under the MIT license
