@@ -2,8 +2,9 @@
 * Craftyslide
 * Created by: Abid Din - http://craftedpixelz.co.uk
 * Version: 1.0
-* License: Creative Commons Share Alike 3.0
-* Updated: 4th June 2011
+* Copyright: Crafted Pixelz
+* License: MIT license
+* Updated: 7th June 2011
 */
 
 (function ($) {
