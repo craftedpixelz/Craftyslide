@@ -33,7 +33,7 @@
             function paginate() {
                 $this.append("<ol id='pagination' />");
                 
-                i = 1;
+                var i = 1;
                 $slides.each(function () {
                     $(this).attr("id", "slide" + i);
                     $("#pagination").append("<li><a href='#slide" + i + "'>" + i + "</a></li>");
