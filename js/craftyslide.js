@@ -32,11 +32,10 @@
             function paginate() {
                 $this.append("<ol id='pagination' />");
                 
-                i = 1;
-                $slides.each(function () {
+                $slides.each(function (index) {
+                    var i = index + 1;
                     $(this).attr("id", "slide" + i);
                     $("#pagination").append("<li><a href='#slide" + i + "'>" + i + "</a></li>");
-                    i++;
                 });
                 
                 $("#pagination li a:first").addClass("active");
