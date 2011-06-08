@@ -14,7 +14,8 @@
         var defaults = {
             "width": 600,
             "height": 300,
-            "pagination": true,
+            "pagination": false,
+            "auto-paginate": true,
             "fadetime": 350,
             "delay": 5000
         };
@@ -101,6 +102,9 @@
             // Check Boolean values
             if (options.pagination === true) {
                 paginate();
+                    if(options.auto-paginate === true {
+                        auto();
+                    }
             } else {
                 auto();
             }
