@@ -1,10 +1,10 @@
 /*
 * Craftyslide
 * Created by: Abid Din - http://craftedpixelz.co.uk
-* Version: 1.0
+* Version: 1.0.1
 * Copyright: Crafted Pixelz
 * License: MIT license
-* Updated: 7th June 2011
+* Updated: 20th February 2012
 */
 
 (function ($) {
@@ -25,6 +25,7 @@
 
             // Vars
             var $this = $(this);
+			var self = this;
             var $slides = $this.find("ul li");
 
             $slides.not(':first').hide();
@@ -76,7 +77,7 @@
             // Auto mode
             function auto() {
                 setInterval(function () {
-                    $slides.filter(":first-child").fadeOut(options.fadetime).next("li").fadeIn(options.fadetime).end().appendTo("#slideshow ul");
+                    $slides.filter(":first-child").fadeOut(options.fadetime).next("li").fadeIn(options.fadetime).end().appendTo("ul", self);
 
                     $slides.each(function () {
                         if ($slides.is(":visible")) {
