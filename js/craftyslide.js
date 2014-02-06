@@ -1,10 +1,11 @@
 /*
 * Craftyslide
 * Created by: Abid Din - http://craftedpixelz.co.uk
-* Version: 1.0
+* This adaptation by Cole Panike - https://github.com/colepanike
+* Version: 1.2
 * Copyright: Crafted Pixelz
 * License: MIT license
-* Updated: 7th June 2011
+* Updated: 6th Feb 2014
 */
 
 (function ($) {
@@ -26,8 +27,14 @@
             // Vars
             var $this = $(this);
             var $slides = $this.find("ul li");
+            var timeout;
 
             $slides.not(':first').hide();
+
+            
+            $.fn.exists = function () {
+                return this.length !== 0;
+            };
 
             // Pagination
             function paginate() {
@@ -59,6 +66,10 @@
                 var $pagination = $("#pagination li a");
                 $pagination.click(function (e) {
                     e.preventDefault();
+                    if(options.delay !== false){
+                        clearTimeout(timeout);
+                        autoPaginate();
+                    }
                     var $current = $(this.hash);
                     if ($current.is(":hidden")) {
                         $slides.fadeOut(options.fadetime);
@@ -75,7 +86,7 @@
 
             // Auto mode
             function auto() {
-                setInterval(function () {
+                setTimeout(function () {
                     $slides.filter(":first-child").fadeOut(options.fadetime).next("li").fadeIn(options.fadetime).end().appendTo("#slideshow ul");
 
                     $slides.each(function () {
@@ -86,10 +97,37 @@
                             }, 300);
                         }
                     });
-
+                    auto();
                 }, options.delay);
             }
-
+            
+            function autoPaginate(){
+                var $firstPagination = $("#pagination li").first().children("a");
+                var $curPagination;
+                var $nextPagination;
+                $(document).ready(function autoRotatePagination() {
+                    timeout = setTimeout(function () {
+                        $curPagination = $("#pagination li a.active");
+                        $nextPagination = $curPagination.parent().next("li").children("a");
+                        if(!$nextPagination.exists()){
+                            $nextPagination = $firstPagination;
+                        }
+                        var $current = $($nextPagination.attr('href')); 
+                        if ($current.is(":hidden")) {
+                            $slides.fadeOut(options.fadetime);
+                            $current.fadeIn(options.fadetime);
+                            $curPagination.removeClass("active");
+                            $nextPagination.addClass("active");
+                            $(".caption").css("bottom", "-37px");
+                            $current.find(".caption").delay(300).animate({
+                                bottom: 0
+                            }, 300);
+                        }
+                        autoRotatePagination();
+                    }, options.delay);
+                });
+            }; 
+            
             // Width
             $this.width(options.width);
             $this.find("ul, li img").width(options.width);
@@ -101,6 +139,9 @@
             // Check Boolean values
             if (options.pagination === true) {
                 paginate();
+                if(options.delay !== false){
+                    autoPaginate();
+                }
             } else {
                 auto();
             }

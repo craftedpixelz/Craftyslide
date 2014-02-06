@@ -35,10 +35,13 @@
       </div>   
       
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-      <script src="js/craftyslide.min.js"></script>
+      <script src="js/craftyslide.js"></script>
       
       <script>
-        $("#slideshow").craftyslide();
+        $("#slideshow").craftyslide({
+            //'pagination':false,
+            'delay': false
+        });
       </script> 
     </body>
 </html>
