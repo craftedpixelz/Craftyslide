@@ -57,14 +57,15 @@
             // Manual mode
             function manual() {
                 var $pagination = $("#pagination li a");
-               	var $current = $slides.filter(":first-child");
+				var $current = $slides.filter(":first-child");
+				var $currentPagination = $pagination[0];
 
 				function switchSlides() {
 					if ($current.is(":hidden")) {
 						$slides.fadeOut(options.fadetime);
 						$current.fadeIn(options.fadetime);
 						$pagination.removeClass("active");
-						$(this).addClass("active");
+						$($currentPagination).addClass("active");
 						$(".caption").css("bottom", "-37px");
 						$current.find(".caption").delay(300).animate({
 							bottom: 0
@@ -75,6 +76,7 @@
 				$pagination.click(function (e) {
 					e.preventDefault();
 					$current = $(this.hash);
+					$currentPagination = $(this);
 					switchSlides();
 				});
 
@@ -83,9 +85,13 @@
 					var right = 39;
 					if (e.keyCode === left) {
 						$current = $current.prev()[0] ? $current.prev() : $current;
+						$currentPagination = $($currentPagination).parent().prev()[0]?
+							$($currentPagination).parent().prev().children("a") : $currentPagination;
 						switchSlides();
 					} else if (e.keyCode === right) {
 						$current = $current.next()[0] ? $current.next() : $current;
+						$currentPagination = $($currentPagination).parent().next()[0]?
+							$($currentPagination).parent().next().children("a"): $currentPagination;
 						switchSlides();
 
 					}
