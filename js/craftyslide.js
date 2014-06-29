@@ -57,20 +57,39 @@
             // Manual mode
             function manual() {
                 var $pagination = $("#pagination li a");
-                $pagination.click(function (e) {
-                    e.preventDefault();
-                    var $current = $(this.hash);
-                    if ($current.is(":hidden")) {
-                        $slides.fadeOut(options.fadetime);
-                        $current.fadeIn(options.fadetime);
-                        $pagination.removeClass("active");
-                        $(this).addClass("active");
-                        $(".caption").css("bottom", "-37px");
-                        $current.find(".caption").delay(300).animate({
-                            bottom: 0
-                        }, 300);
-                    }
-                });
+               	var $current = $slides.filter(":first-child");
+
+				function switchSlides() {
+					if ($current.is(":hidden")) {
+						$slides.fadeOut(options.fadetime);
+						$current.fadeIn(options.fadetime);
+						$pagination.removeClass("active");
+						$(this).addClass("active");
+						$(".caption").css("bottom", "-37px");
+						$current.find(".caption").delay(300).animate({
+							bottom: 0
+						}, 300);
+					}
+				}
+
+				$pagination.click(function (e) {
+					e.preventDefault();
+					$current = $(this.hash);
+					switchSlides();
+				});
+
+				$(document).keyup(function (e) {
+					var left = 37;
+					var right = 39;
+					if (e.keyCode === left) {
+						$current = $current.prev()[0] ? $current.prev() : $current;
+						switchSlides();
+					} else if (e.keyCode === right) {
+						$current = $current.next()[0] ? $current.next() : $current;
+						switchSlides();
+
+					}
+				});
             }
 
             // Auto mode
