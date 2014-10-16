@@ -4,7 +4,7 @@ Craftyslide - A tiny jQuery slideshow plugin
 About
 -----
 
-Craftyslide is a tiny (just 2kb) slideshow built on jQuery. Craftyslide aims to be different, by providing a simple, no-frills method of displaying images; packaged into a small, clean and efficient plugin.
+Craftyslide is a tiny (just 3kb) slideshow built on jQuery. Craftyslide aims to be different, by providing a simple, no-frills method of displaying images; packaged into a small, clean and efficient plugin.
 
 Usage
 -----
@@ -54,7 +54,7 @@ Set a custom height for your slideshow
 
 ### pagination (true/false)
 
-Select whether to display pagination or not. Setting to false hides pagination and enables auto mode.
+Select whether to display pagination or not. Setting to false hides pagination and enables auto mode. If set true and delay is set, autoPaginate will be enabled.
 
 ### fadetime (number)
 
@@ -62,7 +62,7 @@ Define the fade animation speed of slides.
 
 ### delay (number)
 
-Used during auto mode (pagination set to false). Defines the delay between each slide being shown.
+Defines the delay between each slide being shown. If set with pagination = true, autoPaginate is enabled.
 
 ### Options example:
 
